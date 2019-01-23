@@ -1,0 +1,13 @@
+<section class="candidate-readonly">
+  <header>
+    <a routerLink="/candidates/{{jobapplication.candidateId}}" title="View"><span class="fas fa-eye float-right"></span></a>
+    <h3>{{jobapplication.candidate.firstName}} {{jobapplication.candidate.lastName}}</h3>
+    <hr>
+  </header>
+  <main>
+    <div><span class="label-title">Candidate Id: </span> <span class="badge badge-secondary">{{jobapplication.candidateId}}</span></div>
+    <div><span class="label-title">E-mail:</span> {{jobapplication.candidate.email}}</div>
+    <div><span class="label-title">Phonenumber:</span> {{jobapplication.candidate.phoneNumber}}</div>
+
+  </main>
+</section>

@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="box-shadow box-light-background parent-section">
+    <div class="container">
+      <header>
+        <h1>Campaign Overview </h1>
+        <hr>
+      </header>
+      <button class="btn btn-info mb-3" id="CreateButtonCampaign" routerLink="/createcampaign">Create New Campaign</button>
+
+        <app-filtersearch (value)="seachByTitle($event)"></app-filtersearch>
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <section class="campaign-readonly table-responsive">
+            <table id="listcampaings" class="table table-hover">
+              <thead class="thead-green">
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Client</th>
+                  <th scope="col">Start Date Campaign</th>
+                  <th scope="col">Start Date Class</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let campaign of campaigns" routerLink = "/campaigns/{{campaign.id}}" >
+                  <th scope="row"><a title="Detail" id="campaignName">{{campaign.name}}</a></th>
+                  <td><a title="Detail">{{campaign.client}}</a></td>
+                  <td><a title="Detail">{{campaign.startDate | date :'dd-MM-yyyy'}}</a></td>
+                  <td><a title="Detail">{{campaign.classStartDate | date :'dd-MM-yyyy'}}</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>

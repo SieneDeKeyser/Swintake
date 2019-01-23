@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="box-shadow box-light-background parent-section">
+    <div class="container">
+      <header>
+        <h1>Jobapplications Overview </h1>
+        <hr>
+      </header>
+      <section name="job-application-overview">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <section class="jobapplication-readonly table-responsive">
+            <table id="listjobapplications" class="table table-hover">
+              <thead class="thead-green">
+                <tr>
+                  <th scope="col">Candidate</th>
+                  <th scope="col">Campaign</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Selection step</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let jobapplication of jobApplications" routerLink = "/jobapplications/{{jobapplication.id}}">
+                  <td><a routerLink="/candidates/{{jobapplication.candidateId}}" id="candidateNameJobapplication" title="Detail">{{jobapplication.candidate.firstName}} {{jobapplication.candidate.lastName}}</a></td>
+                  <td><a routerLink="/campaigns/{{jobapplication.campaignId}}" id="campaignNameJobapplication" title="Detail">{{jobapplication.campaign.name}}</a></td>
+                  <td><div *ngIf="jobapplication.status == 'Rejected'; then rejectedBlock; else activeBlock"></div>
+                            <ng-template #rejectedBlock><span class="badge badge-danger">{{jobapplication.status}}</span></ng-template>
+                            <ng-template #activeBlock><span class="badge badge-info">{{jobapplication.status}}</span></ng-template>
+                  <td><span *ngIf="jobapplication.currentSelectionStep" class="badge badge-secondary" title="Detail">{{jobapplication.currentSelectionStep.description}}</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </section>
+      </div>
+    </div>
+  </div>

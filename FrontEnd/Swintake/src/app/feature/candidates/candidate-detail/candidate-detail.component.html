@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="box-shadow box-light-background parent-section">
+    <div class="container">
+      <header>
+        <h1>Candidate Detail </h1>
+        <hr>
+      </header>
+      <table id="CandidateTable" class="table table-bordred table-striped">
+          <tr>
+              <th>FirstName: </th>
+              <td id="detailCandidateFirstname">{{candidate.firstName}}</td>
+            </tr>
+            <tr>
+              <th>LastName: </th>
+              <td>{{candidate.lastName}}</td>
+            </tr>
+            <tr>
+              <th>Email:</th>
+              <td><a href="mailto:{{candidate.email}}">{{candidate.email}}</a></td>
+            </tr>
+            <tr>
+              <th>Phone:</th>
+              <td>{{candidate.phoneNumber}}</td>
+            </tr>
+            <tr>
+               <th>Github:</th>
+               <td><a href="https://github.com/{{candidate.gitHubUserName}}">{{candidate.gitHubUserName}}</a></td>
+            </tr>
+            <tr>
+              <th>LinkedIn:</th>
+              <td><a href="https://linkedin.com/{{candidate.linkedIn}}">{{candidate.linkedIn}}</a></td>
+            </tr>
+            <tr>
+              <th>Comment:</th>
+              <td>{{candidate.comment}}</td>
+              <!-- <td> <textarea wrap="hard">{{candidate.comment}}</textarea></td> -->
+            </tr>
+      </table>
+    <section class="create-job-application-section">
+      <app-campaign-dropdown></app-campaign-dropdown>
+    </section>
+    </div>
+  </div>

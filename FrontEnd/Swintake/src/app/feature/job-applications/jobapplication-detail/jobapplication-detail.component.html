@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="box-shadow box-light-background parent-section">
+    <div class="container" >
+      <header>
+        <h1>Job Application <small class="sub-title badge badge-dark">{{jobapplicationId}}</small></h1>
+        <hr>
+      </header>
+      <section name="candidate-campaign-readonly" *ngIf="isJobApplicationRetrieved" >
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <app-detailcandidate [jobapplication]="jobapplication">
+            </app-detailcandidate>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <app-detailcampaign [jobapplication]="jobapplication"></app-detailcampaign>
+          </div>
+        </div>
+      </section>
+      <hr>
+      <section name="application-control-section" class="application-control-section" *ngIf="isJobApplicationRetrieved" >
+        <span class="float-left"><button type="button" class="btn btn-success btn-md" (click)="cancel()">Cancel</button></span>
+        <span class="float-right"><button type="button" class="btn btn-danger btn-md">Reject Job Application</button></span>
+      </section>
+      <hr>
+      <section name="selection-procedure-steps" *ngIf="isJobApplicationRetrieved">
+        <div class="container" >
+          <app-selection-steps [jobapplication]="jobapplication"></app-selection-steps>
+        </div>
+      </section>
+      </div>
+      </div>
+
+</div>

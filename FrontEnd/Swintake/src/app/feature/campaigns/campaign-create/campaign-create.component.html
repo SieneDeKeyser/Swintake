@@ -1,0 +1,48 @@
+<div class="container">
+<div class="box-shadow box-light-background parent-section">
+    <div class="container">
+        <header>
+            <h1>Create a new campaign</h1>
+            <hr>
+        </header>
+        <form [formGroup]="createNewCampaignForm" (ngSubmit)="isValid() && create()">
+            <div class="form-group">
+                <label for="inputNameText" class="label-title">Name:</label>
+                <input formControlName="name" type="text" class="form-control" id="inputNameText" [ngClass]="{'is-invalid': submitted && formValues.name.errors}">
+                <div *ngIf="submitted && formValues.name.errors" class="invalid-feedback">
+                    <div *ngIf="formValues.name.errors.required">Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputClientText" class="label-title">Client:</label>
+                <input formControlName="client" type="text" class="form-control" id="inputClientText" [ngClass]="{'is-invalid': submitted && formValues.client.errors}">
+                <div *ngIf="submitted && formValues.client.errors" class="invalid-feedback">
+                    <div *ngIf="formValues.client.errors.required">ClientName is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputStartDate" class="label-title">Start Date Campaign:</label>
+                <input formControlName="startDate" type="date" min="today" class="form-control" id="inputStartDate" [ngClass]="{'is-invalid': submitted && formValues.startDate.errors}">
+                <div *ngIf="submitted && formValues.startDate.errors" class="invalid-feedback">
+                    <div *ngIf="formValues.startDate.errors.required">CampaingStart date is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputClassStartDate" class="label-title">Start Date Class:</label>
+                <input formControlName="classStartDate" type="date" class="form-control" id="inputClassStartDate"
+                    [ngClass]="{'is-invalid': submitted && formValues.classStartDate.errors}">
+                    <div *ngIf="submitted && errorMessageForClassStartDate" style="color: #dc3545; font-size:80%;" >{{errorMessageForClassStartDate}}</div>
+                <div *ngIf="submitted && formValues.classStartDate.errors" class="invalid-feedback">
+                    <div *ngIf="formValues.classStartDate.errors.required">ClassstartDate is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  for="inputCommentText" class="label-title">Comment:</label>
+                <input formControlName="comment" type="text" class="form-control" id="inputCommentText">
+            </div>
+            <button id="CampaignCreateButton" class="btn btn-success btn-md mx-2" type="submit">Create</button>
+            <button class="btn btn-danger" type="reset" (click)="cancel()">Cancel</button>
+        </form>
+    </div>
+</div>
+</div>

@@ -1,0 +1,12 @@
+::ng-deep .mat-form-field{
+    display: block !important;
+}
+
+::ng-deep .mat-input-wrapper{
+    width:50% !important;
+  }
+
+  .inputfield{
+    width:50% !important;
+
+  }
