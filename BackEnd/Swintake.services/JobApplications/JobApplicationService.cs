@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Swintake.domain;
 using Swintake.domain.JobApplications;
@@ -78,8 +79,16 @@ namespace Swintake.services.JobApplications
             return jobApplication;
         }
 
+        public JobApplication EditComment(string id, string selectionStepDescription, string comment)
+        {
+            JobApplication jobApplicationToUpdate = GetJobApplicationById(id);
+            jobApplicationToUpdate.SelectionSteps.Where(x => x.Description == selectionStepDescription).Single().Comment = comment;
+            _repository.Update(jobApplicationToUpdate);
+            return jobApplicationToUpdate;
 
-       
+        }
+
+
 
 
     }

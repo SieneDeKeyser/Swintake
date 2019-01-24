@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swintake.api.Helpers.JobApplications;
-using Swintake.domain.JobApplications;
+using Swintake.api.Helpers.JobApplications.Selection;
 using Swintake.services.JobApplications;
 
 namespace Swintake.api.Controllers
@@ -47,7 +47,15 @@ namespace Swintake.api.Controllers
 
         }
 
- 
+        [HttpPut]
+        [Route("editComment/{id}")]
+        public ActionResult<JobApplicationDto> EditComment(string id, [FromBody] EditCommentDto editCommentDto)
+        {
+            var jobapp = _jobApplicationService.EditComment(id, editCommentDto.DescriptionSelectionStep, editCommentDto.Comment);
+            return Ok(_jobApplicationMapper.ToDto(jobapp));
+        }
+
+
         [HttpPut]
         [Route("nextStep/{id}")]
         public ActionResult<JobApplicationDto> UpdateJobApplication(string id, [FromBody] string comment = null)
