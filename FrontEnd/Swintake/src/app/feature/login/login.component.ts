@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { first } from 'rxjs/operators';
+import { finalize, first, catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/authentication/services/auth.service';
 
 @Component({
@@ -48,19 +48,22 @@ export class LoginComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
+    this.authService.logout();
     this.userForm = this.formbuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
         password: ['', Validators.required]
       }
     );
-
-    this.authService.logout();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   get formValues() {
     return this.userForm.controls;
+  }
+
+  logOut(){
+    this.authService.logout();
   }
 
   isValid(): boolean {
@@ -76,12 +79,17 @@ export class LoginComponent implements OnInit {
     const val = this.userForm.value;
     if (val.email && val.password) {
       this.authService.login(val.email, val.password)
-        .pipe(first())
+        .pipe(
+        finalize(()=> {this.loading = false;
+        this.isSubmitted = false;
+      }))
         .subscribe(data => {
-          this.router.navigate(['/jobapplications']);},
+          if (data){
+            this.router.navigate(['/jobapplications']);}
+          },
           error => {
-          this.open('Oops!','E-mail or Password invalid');
-          this.loading = false;
+          this.open('Oops!',
+          error.error);
         });
     }
   }
