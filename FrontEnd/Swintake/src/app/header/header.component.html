@@ -1,4 +1,4 @@
-<nav *ngIf="authService.isAuthenticated()" id="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow">
+<nav  *ngIf="currentUser" id="navbar" class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark box-header-border box-header-shadow">
   <a class="navbar-brand" routerLink="/jobapplications/">Switch<span class="text-green">fully</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +21,7 @@
         <div ngbDropdown>
        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
-          <span class="fas fa-user"></span> <span class="label-title"> Signed-in as: </span><span id="loggedInUser"> {{currentUserName}}</span>
+          <span class="fas fa-user"></span> <span class="label-title"> Signed-in as: </span><span id="loggedInUser">{{currentUserName}} </span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" ngbDropdownMenu id="dropdownMenuHeader">
             <a class="dropdown-item" (click)="logOut()" id="logOutLink">Sign-out</a>
