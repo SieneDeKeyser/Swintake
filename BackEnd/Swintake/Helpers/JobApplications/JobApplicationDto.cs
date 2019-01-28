@@ -9,6 +9,7 @@ using Swintake.api.Helpers.Candidates;
 using Swintake.domain.Campaigns;
 using Swintake.domain.Candidates;
 using Swintake.domain.JobApplications.SelectionSteps;
+using Swintake.api.Helpers.JobApplications.Selection;
 
 namespace Swintake.api.Helpers.JobApplications
 {
@@ -26,11 +27,4 @@ namespace Swintake.api.Helpers.JobApplications
        
     }
 
-    public class SelectionStepDto
-    {
-        public Guid JobApplicationId { get; set; }
-        public string Description { get; set; }
-        public string Comment { get; set; }
-
-    }
 }

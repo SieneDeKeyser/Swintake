@@ -16,5 +16,6 @@ namespace Swintake.services.JobApplications
         JobApplication GoToNextSelectionStepInSelectionProcess(string id, string comment);
         JobApplication UploadFileToJobApplication(JobApplication jobApp, FileToUpload file);
 
+        JobApplication EditComment(string id, string descriptionSelectionStep, string comment);
     }
 }

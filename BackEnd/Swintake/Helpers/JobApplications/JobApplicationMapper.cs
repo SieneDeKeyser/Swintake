@@ -3,10 +3,10 @@ using Swintake.infrastructure.Mappers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Swintake.api.Helpers.Campaigns;
 using Swintake.api.Helpers.Candidates;
 using Swintake.domain.JobApplications.SelectionSteps;
+using Swintake.api.Helpers.JobApplications.Selection;
 
 namespace Swintake.api.Helpers.JobApplications
 {

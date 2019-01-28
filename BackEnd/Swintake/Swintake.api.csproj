@@ -6,7 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\SelectionSteps\" />
+    <Compile Remove="Helpers\SelectionSteps\**" />
+    <Content Remove="Helpers\SelectionSteps\**" />
+    <EmbeddedResource Remove="Helpers\SelectionSteps\**" />
+    <None Remove="Helpers\SelectionSteps\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

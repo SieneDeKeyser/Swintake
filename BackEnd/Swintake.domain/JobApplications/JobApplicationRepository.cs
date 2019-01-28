@@ -35,9 +35,6 @@ namespace Swintake.domain.JobApplications
                 .Include(jobapp => jobapp.Campaign)
                 .Include(jobapp => jobapp.Candidate)
                 .ToList();
-                //.Include(jp => jp.Campaign)
-                //.Include(jp => jp.Candidate)
-                //.Include(jp => jp.Status)
         }
 
         public JobApplication Save(JobApplication jobapplication)

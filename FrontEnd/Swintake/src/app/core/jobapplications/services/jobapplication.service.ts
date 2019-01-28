@@ -40,4 +40,8 @@ export class JobApplicationService {
     return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}nextstep/${id}`, JSON.stringify(comment) , httpOptions)
   }
 
+  editComment(id: string, DescriptionSelectionStep: string, comment: string): Observable<JobApplication>{
+    return this.http.put<JobApplication>(`${ApiUrl.urlJobApplications}editComment/${id}`, {DescriptionSelectionStep, comment}, httpOptions);
+  }
+
 }
