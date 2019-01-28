@@ -1,22 +1,38 @@
 <div class="row">
   <div class="col">
     <section class="box-section-shadow box-light-background sub-section" *ngIf="selectionSteps">
-      <div  *ngFor="let selectionStep of selectionSteps" >
-      <header>
-        <a href="#" title="Edit"><span class="fas fa-edit float-right"></span></a>
-        <h3><span class="fas fa-check-square text-green"></span> {{selectionStep.description}}</h3>
-        <hr>
-      </header>
-      <main>
-        <form>
-          <div class="form-group">
+      <div *ngFor="let selectionStep of selectionSteps">
+        <header>
+          <a (click)="edit(selectionStep)" title="Edit"><span class="fas fa-edit float-right"></span></a>
+          <h3><span class="fas fa-check-square text-green"></span> {{selectionStep.description}}</h3>
+          <hr>
+        </header>
+        <main>
+          <form [formGroup]="SelectionStepForm" (ngSubmit)="isValid() && saveEdittedComment()">
             <label for="phoneScreeningNotesTextArea" class="label-title">Comments</label>
-            <textarea class="form-control" id="CommentTextArea" rows="6" readonly>{{selectionStep.comment}}
+            <div *ngIf="selectionStepToEdit; else normalView">
+              <div class="form-group">
+                <div *ngIf="!(selectionStep.description == selectionStepToEdit.description)">
+                  <textarea class="form-control" id="CommentTextArea" rows="6" readonly>{{selectionStep.comment}}
             </textarea>
-          </div>
-        </form>
-      </main>
-    </div>
+                </div>
+                <div *ngIf="(selectionStep.description == selectionStepToEdit.description); else">
+                  <textarea formControlName="comment" class="form-control" id="{{selectionStepToEdit}}NotesTextArea"
+                    rows="6"></textarea>
+                    <button type="button" name="cancel" class="btn btn-outline-secondary btn-sm" (click)="cancelEditing()">Cancel</button>
+                    <button type="submit" class="btn btn-success btn-sm float-right">Save</button>
+                  </div>
+              </div>
+            </div>
+              <ng-template #normalView>
+                  <div class="form-group">
+                      <textarea class="form-control" id="CommentTextArea" rows="6" readonly>{{selectionStep.comment}}
+                        </textarea>
+                  </div>
+              </ng-template>
+          </form>
+        </main>
+      </div>
     </section>
     <div *ngIf="selectionSteps" class="sub-section-complete"></div>
   </div>
@@ -32,8 +48,8 @@
       </header>
       <main>
         <form [formGroup]="SelectionStepForm" (ngSubmit)="isValid() && save()">
+          <label for="{{nextSelectionStep}}NotesTextArea" class="label-title">Comments</label>
           <div class="form-group">
-            <label for="{{nextSelectionStep}}NotesTextArea" class="label-title">Comments</label>
             <textarea formControlName="comment" class="form-control" id="{{nextSelectionStep}}NotesTextArea" rows="6"></textarea>
           </div>
           <button type="button" name="cancel" class="btn btn-outline-secondary btn-sm" (click)="cancel()">Cancel</button>
@@ -41,10 +57,10 @@
         </form>
       </main>
     </section>
-    
+
   </div>
 </div>
 
 <div class="row" *ngIf="jobapplication.selectionSteps && orderSelectionStepArray.length === jobapplication.selectionSteps.length  && jobapplication.status !== 'Hired' ">
-    <button type="click" (click)="accept()" class="btn btn-success btn-sm float-right">Accept</button>
+  <button type="click" (click)="accept()" class="btn btn-success btn-sm float-right">Accept</button>
 </div>
