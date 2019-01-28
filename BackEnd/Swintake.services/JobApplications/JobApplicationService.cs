@@ -78,7 +78,7 @@ namespace Swintake.services.JobApplications
                 throw new EntityNotFoundException("get job application", "job application", new Guid(id));
             }
             return jobApplication;
-<<<<<<< HEAD
+
         }
 
         public JobApplication UploadFileToJobApplication(JobApplication jobApp, FileToUpload file)
@@ -95,8 +95,7 @@ namespace Swintake.services.JobApplications
 
             return _repository.Update(jobApp);
         }
-=======
-        }
+        
 
         public JobApplication EditComment(string id, string selectionStepDescription, string comment)
         {
@@ -107,9 +106,5 @@ namespace Swintake.services.JobApplications
 
         }
 
-
-
-
->>>>>>> a98f9d6d58b4c1f4843a7a76ce3470e5b19f3d44
     }
 }
