@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Swintake.domain.Campaigns;
 using Swintake.domain.Candidates;
+using Swintake.domain.FilesToUpload;
 using Swintake.domain.JobApplications;
 using Swintake.domain.JobApplications.SelectionSteps;
 using Swintake.domain.Users;
@@ -16,8 +17,8 @@ namespace Swintake.domain.Data
         public DbSet<Campaign> Campaigns { get; set; }
         public DbSet<Candidate> Candidates { get; set; }
         public DbSet<JobApplication> JobApplications { get; set; }
-
         public DbSet<SelectionStep> SelectionSteps { get; set; }
+        public DbSet<FileToUpload> Files { get; set; }
 
         public SwintakeContext(ILoggerFactory loggerFactory)
         {
@@ -79,6 +80,7 @@ namespace Swintake.domain.Data
                         .IsRequired()
                         .OnDelete(DeleteBehavior.Restrict);
 
+
             modelBuilder.Entity<SelectionStep>()
                 .ToTable("SelectionStep")
                 .HasKey(selectionStep => new {selectionStep.JobApplicationId, selectionStep.Description});
@@ -107,6 +109,19 @@ namespace Swintake.domain.Data
 
             modelBuilder.Entity<TestResult>();
 
+            modelBuilder.Entity<FileToUpload>()
+                   .ToTable("Files")
+                   .HasKey(file => file.Id);
+
+            modelBuilder.Entity<JobApplication>()
+                        .HasOne(jobApp => jobApp.CV)
+                        .WithOne()
+                        .HasForeignKey<JobApplication>(jobApp => jobApp.CvGuid);
+
+            modelBuilder.Entity<JobApplication>()
+                        .HasOne(jobApp => jobApp.MotivationLetter)
+                        .WithOne()
+                        .HasForeignKey<JobApplication>(jobApp => jobApp.MotivationLetterGuid);
 
             base.OnModelCreating(modelBuilder);
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Swintake.domain;
+using Swintake.domain.FilesToUpload;
 using Swintake.domain.JobApplications;
 using Swintake.infrastructure.Exceptions;
 using Swintake.services.Campaigns;
@@ -78,9 +79,19 @@ namespace Swintake.services.JobApplications
             return jobApplication;
         }
 
+        public JobApplication UploadFileToJobApplication(JobApplication jobApp, FileToUpload file)
+        {
+            switch (file.Filetype)
+            {
+                case FileType.Cv:
+                    jobApp.CvGuid = file.Id;
+                    break;
+                case FileType.MotivationLetter:
+                    jobApp.MotivationLetterGuid = file.Id;
+                    break;
+            }
 
-       
-
-
+            return _repository.Update(jobApp);
+        }
     }
 }

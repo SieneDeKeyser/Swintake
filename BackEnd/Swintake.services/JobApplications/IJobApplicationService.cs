@@ -1,4 +1,5 @@
-﻿using Swintake.domain.JobApplications;
+﻿using Swintake.domain.FilesToUpload;
+using Swintake.domain.JobApplications;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,7 @@ namespace Swintake.services.JobApplications
         JobApplication AcceptJobApplication(string id);
         IEnumerable<JobApplication> GetJobApplications();
         JobApplication GoToNextSelectionStepInSelectionProcess(string id, string comment);
+        JobApplication UploadFileToJobApplication(JobApplication jobApp, FileToUpload file);
+
     }
 }

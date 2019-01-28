@@ -9,11 +9,13 @@ namespace Swintake.api.Helpers.JobApplications
     {
         public string CandidateId { get; set; }
         public string CampaignId { get; set; }
+        public string CvId { get; set; }
+        public string MotivationId { get; set; }
 
         public CreateJobApplicationDto(string candidateId, string campaignId)
         {
             CandidateId = candidateId;
             CampaignId = campaignId;
         }
-    }
+   }
 }

@@ -30,6 +30,9 @@ using Swintake.api.Helpers.Candidates;
 using Swintake.domain.JobApplications;
 using Swintake.services.JobApplications;
 using Swintake.api.Helpers.JobApplications;
+using Swintake.domain.FilesToUpload;
+using Swintake.services.Files;
+using Swintake.api.Helpers.Files;
 
 namespace Swintake.api
 {
@@ -115,6 +118,9 @@ namespace Swintake.api
             services.AddScoped<IJobApplicationService, JobApplicationService>();
             services.AddScoped<JobApplicationMapper>();
 
+            services.AddScoped<FileRepository>();
+            services.AddScoped<IFileService, FileService>();
+            services.AddScoped<FileMapper>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddSwagger();

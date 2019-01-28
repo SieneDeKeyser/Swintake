@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Swintake.domain.JobApplications.SelectionSteps;
+using Swintake.domain.FilesToUpload;
 
 namespace Swintake.domain.JobApplications
 {
@@ -16,7 +17,11 @@ namespace Swintake.domain.JobApplications
         public Guid CampaignId { get; set; }
         public List<SelectionStep> SelectionSteps { get; set; }
         public SelectionStep CurrentSelectionStep { get; set; }
-
+        public FileToUpload CV { get; set; }
+        public Guid? CvGuid { get; set; }
+        public FileToUpload MotivationLetter { get; set; }
+        public Guid? MotivationLetterGuid { get; set; }
+    
         public StatusJobApplication Status { get; set; }
 
         private JobApplication(){}
@@ -77,6 +82,8 @@ namespace Swintake.domain.JobApplications
         public Guid CandiDateId { get; set; }
         public Guid CampaignId { get; set; }
         public StatusJobApplication Status { get; set; }
+        public Guid CvGuid { get; set; }
+        public Guid MotivationLetterGuid { get; set; }
 
         public static JobApplicationBuilder NewJobApplication()
         {
@@ -106,6 +113,19 @@ namespace Swintake.domain.JobApplications
             Status = status;
             return this;
         }
+
+        public JobApplicationBuilder WithCv(Guid cvId)
+        {
+            CvGuid = cvId;
+            return this;
+        }
+
+        public JobApplicationBuilder WithMotivationLetter(Guid motivationLetterId)
+        {
+            MotivationLetterGuid = motivationLetterId;
+            return this;
+        }
+
         public override JobApplication Build()
         {
             return new JobApplication(this);
