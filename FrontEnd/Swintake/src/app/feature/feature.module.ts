@@ -17,6 +17,7 @@ import { DetailcandidateComponent } from './job-applications/jobapplication-deta
 import { DetailcampaignComponent } from './job-applications/jobapplication-detail/detailcampaign/detailcampaign.component';
 import { SelectionStepsComponent } from './job-applications/selection-steps/selection-steps.component';
 import { SharedModule } from '../shared/shared.module';
+import { UploadFilesComponent } from './upload-files/upload-files.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SharedModule } from '../shared/shared.module';
     JobapplicationDetailComponent,
     DetailcandidateComponent,
     DetailcampaignComponent,
-    SelectionStepsComponent
+    SelectionStepsComponent,
+    UploadFilesComponent
   ],
   entryComponents:[NgbdModalContent],
   imports: [

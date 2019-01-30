@@ -16,8 +16,10 @@
                 </div>
             </div>
         </div>
-        <button type="submit" id="jobapplicationCreateButton" class="btn btn-success btn-md mx-2" [disabled]="!DropngForm.form.valid">
-            Submit
-        </button>
-        <button type="reset" class="btn btn-danger" (click)="cancel()">Cancel</button>
+
+<app-upload-files></app-upload-files>
+<button type="submit" id="jobapplicationCreateButton" class="btn btn-success btn-md mx-2" [disabled]="!DropngForm.form.valid">
+        Submit
+</button>
+<button type="reset" class="btn btn-danger" (click)="cancel()">Cancel</button>
 </form>

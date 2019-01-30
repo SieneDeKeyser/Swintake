@@ -1,0 +1,9 @@
+#MotivationUpload, #CVUpload
+{
+    display: inline;
+    width: auto;
+}
+
+#labelMotivation, #labelCV{
+    width: 15%;
+}

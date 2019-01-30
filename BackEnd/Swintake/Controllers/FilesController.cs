@@ -10,6 +10,7 @@ using System.IO;
 using Swintake.services.JobApplications;
 using Swintake.api.Helpers.Files;
 using Swintake.services.Files;
+using Newtonsoft.Json;
 
 namespace Swintake.api.Controllers
 {
@@ -27,12 +28,14 @@ namespace Swintake.api.Controllers
 
         [HttpPost, DisableRequestSizeLimit]
         [Authorize]
-        public async Task<IActionResult> UpLoadFile([FromHeader] FileDTOToCreate fileDto)
+        public async Task<IActionResult> UpLoadFile()
         {
             var file = Request.Form.Files[0];
+            FileDTOToCreate fileDto =  JsonConvert.DeserializeObject<FileDTOToCreate>(Request.Headers["fileDto"]);
+
             var fileDtoWithFormFile = _fileMapper.ToFileDtoWithFormFile(fileDto, file);
 
-            var result = await _fileService.UploadFile(_fileMapper.ToDomainFile(fileDtoWithFormFile), fileDto.jobApplicationId);
+            var result = await _fileService.UploadFile(_fileMapper.ToDomainFile(fileDtoWithFormFile), fileDto.JobApplicationId);
             return Created($"api/files/{result.Id}", result);
         }
 

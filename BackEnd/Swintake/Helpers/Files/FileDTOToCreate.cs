@@ -8,7 +8,7 @@ namespace Swintake.api.Helpers.Files
 {
     public class FileDTOToCreate
     {
-        public string jobApplicationId { get; set; }
+        public string JobApplicationId { get; set; }
         public string FileType { get; set; }
     }
 }

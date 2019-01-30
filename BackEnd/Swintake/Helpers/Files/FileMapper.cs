@@ -16,7 +16,7 @@ namespace Swintake.api.Helpers.Files
         {
             return new FileDtoWithFormFile()
             {
-                jobApplicationId = filedto.jobApplicationId,
+                jobApplicationId = filedto.JobApplicationId,
                 FileType = filedto.FileType,
                 FileToUpload = formfile
             };
@@ -30,7 +30,7 @@ namespace Swintake.api.Helpers.Files
                 case "CV":
                     newFile.Filetype = FileType.Cv;
                     break;
-                case "Motivation Letter":
+                case "MotivationLetter":
 
                     newFile.Filetype = FileType.MotivationLetter;
                     break;

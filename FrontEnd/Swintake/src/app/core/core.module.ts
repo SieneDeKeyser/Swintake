@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './authentication/helpers/auth.guard';
 import { CandidateService } from './candidates/services/candidate.service';
 import { JobApplicationService } from './jobapplications/services/jobapplication.service';
+import { FileService } from './files/services/file.service';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { JobApplicationService } from './jobapplications/services/jobapplication
     AuthGuard,
     CandidateService,
     JobApplicationService,
+    FileService
   ]
 
 })
