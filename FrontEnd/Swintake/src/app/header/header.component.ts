@@ -39,11 +39,14 @@ export class HeaderComponent {
   }
 
   getCurrentUserName() {
-      return this.authService.getCurrentUser().subscribe(
-         user => {
-           this.currentUser = user;
-           this.currentUserName = user.firstName;
-         });     
+    if(this.isLoggedIn){
+       this.authService.getCurrentUser().subscribe(
+        user => {
+          this.currentUser = user;
+          this.currentUserName = user.firstName;
+        });  
+    }
+   
 }
 }
 

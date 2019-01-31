@@ -21,13 +21,13 @@ export class AuthService {
 
   private userUrl = ApiUrl.urlUsers;
   private jwtHelper: JwtHelperService;
-  
+  userAuth: UserAuth; 
   private logginIn = false;
   
   constructor(private http: HttpClient) {
-    let userAuth = new UserAuth();
-    userAuth.token = localStorage.getItem('tokenInfo');
-    this.currentUserTokenSubject = new BehaviorSubject<UserAuth>(userAuth);
+     this. userAuth = new UserAuth();
+    this.userAuth.token = localStorage.getItem('tokenInfo');
+    this.currentUserTokenSubject = new BehaviorSubject<UserAuth>(this.userAuth);
     this.currentUserToken = this.currentUserTokenSubject.asObservable();
   }
 
